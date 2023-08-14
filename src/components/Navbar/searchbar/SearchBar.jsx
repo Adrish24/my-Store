@@ -5,7 +5,7 @@ import AppContext from "../../../context/AppContext";
 import SearchList from "../searchList/SearchList";
 
 const SearchBar = () => {
-  const { value, handleChange, handleSearch } = useContext(AppContext)
+  
   
   
 
