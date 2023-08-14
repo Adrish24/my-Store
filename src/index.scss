@@ -1,0 +1,53 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root{
+  --border-color-start: rgba(0,0,0,0.3);
+  --border-color-end: rgb(255, 255, 255);
+}
+
+*,*::after,*::before{
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body{
+  margin:0;
+  padding:0;
+}
+
+.sticky{
+  position: -webkit-sticky;
+  top:64px
+}
+
+.fadebottom-border{
+    border-image: linear-gradient(to bottom, var(--border-color-start), var(--border-color-end));
+    border-image-slice:1;
+    border-image-width: 0 0 0 2px;
+}
+.fadetop-border{
+    border-image: linear-gradient(to top, var(--border-color-start), var(--border-color-end));
+    border-image-slice:1;
+    border-image-width: 0 2px 0 0;
+}
+
+
+.zoom {
+  display: flex;
+  justify-content: center;
+  position: absolute;
+  top: 0;
+  left: 35rem;
+  height: 600px;
+  width: 800px;
+  overflow: hidden;
+  object-fit: contain;
+  background-color: white;
+}
+
+.searchList{
+  width: 600px;
+}
