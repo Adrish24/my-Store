@@ -15,13 +15,13 @@ const Home = () => {
 
 
   const style = "drop-shadow-sm bg-white"
-  const advertisements = "grid grid-cols-4 grid-flow-dense row-auto gap-3 bg-transparent mb-3 z-5"
+  const advertisements = "grid xs:grid-cols-2 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-2 grid-cols-4 grid-flow-dense row-auto gap-3 bg-transparent mb-3 z-5"
   const carousels = "bg-white py-4 px-3 mb-3"
 
   return (
     <div className="home flex flex-col justify-center items-center bg-slate-300 w-full pt-16 select-none">
-      <div className="2xl:w-11/12 3xl:w-9/12">
-        <div className="carousel w-full mb-3 mt-2">
+      <div className="xs:w-full sm:w-full md:w-full lg:w-full xl:w-11/12 2xl:w-11/12 3xl:w-9/12 p-2 min-h-screen">
+        <div className="carousel w-full mb-3">
           <Hero />
         </div>
         <div className={advertisements}>

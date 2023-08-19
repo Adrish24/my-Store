@@ -38,12 +38,23 @@ const CarouselOne = () => {
   };
 
   const updateScrollX = () => {
-    if (carouselItemTwo.length === 1) setScrollX(8.8);
-    // if (item2.length === 2) setScrollX(30);
-    // if (item2.length === 3) setScrollX(50);
-    // if (item2.length === 4) setScrollX(70);
-    // if (item2.length === 5) setScrollX(90);
+    if(window.innerWidth >= 1535){
+      if (carouselItemTwo.length === 1) setScrollX(8.8);
+    }
+    if(window.innerWidth <= 1535 && window.innerWidth >= 1280){
+      if (carouselItemTwo.length === 1) setScrollX(20);
+    }
+    if(window.innerWidth <= 1280 && window.innerWidth >= 1024){
+      if (carouselItemTwo.length === 1) setScrollX(30);
+    }
+    if(window.innerWidth <= 1024 && window.innerWidth >= 768){
+      if (carouselItemTwo.length === 1) setScrollX(40);
+    }
+    if(window.innerWidth <= 768 && window.innerWidth >= 640){
+      if (carouselItemTwo.length === 1) setScrollX(50);
+    }
   };
+
   
   // handling left and right show
   const onMouseEnter = () => {
@@ -60,10 +71,10 @@ const CarouselOne = () => {
       onMouseLeave={onMouseLeave} className="flex flex-col justify-center relative bg-white overflow-hidden">
       <div
         className="whitespace-nowrap flex duration-500 ease-in-out"
-        style={{ transform: `translateX(-${activeIndex * scrollX}%)` }}
+        style={{ transform: `translateX(-${activeIndex * scrollX}%)`, maxWidth: '100%' }}
       >
         {carouselItems.map((items, index) => (
-          <div key={index} className="w-full h-60 inline-flex gap-2">
+          <div key={index} className="w-full h-60 inline-flex gap-2 sm:w-screen md:w-screen">
             {items.map((item) => (
               <CarouselOneItems key={item.id} item={item} />
             ))}

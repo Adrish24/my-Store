@@ -8,11 +8,13 @@ const AppContext = createContext();
 export const DataProvider = ({ children }) => {
   const [value, setValue] = useState("");
   const [category, setCategory] = useState("All");
+  const [select, setSelect] = useState("");
 
-  const [activeSerchList, setActiveSearchList] = useState(false);
+  const [activeSearchList, setActiveSearchList] = useState(false);
   const [show, setShow] = useState(false);
   const [isLoading, setLoading] = useState(false);
 
+  const [categoryList, setCategoryList] = useState([]);
   const [searchList, setSearchList] = useState([]);
   const [product, setProduct] = useState([]);
   const [products, setProducts] = useState([]);
@@ -20,11 +22,19 @@ export const DataProvider = ({ children }) => {
   const [jewelerys, setjewelerys] = useState([]);
   const [electronics, setElectronics] = useState([]);
   const [Wcloths, setWcloths] = useState([]);
-
+  const [selectedItems, setSelectedItems] = useState([]);
   const [addToCart, setAddToCart] = useState([]);
+  const [minMaxPriceRange, setMinMaxPriceRange] = useState([]);
 
   const [count, setCount] = useState(0);
   const [price, addPrice] = useState(0);
+  const [minMax, setMinMax] = useState([0, 0]);
+  const [min, setMin] = useState(0);
+  const [max, setMax] = useState(0);
+  const [step, setStep] = useState(0);
+  const [rating, setRating] = useState(3);
+  const [hover, setHover] = useState(-1);
+  const [ratingSelect, setRatingSelect] = useState(3);
 
   const getProducts = async () => {
     try {
@@ -36,6 +46,9 @@ export const DataProvider = ({ children }) => {
   };
 
   const getSingleProduct = async (id) => {
+    setValue("");
+    setSearchList([]);
+    setActiveSearchList(false);
     window.scrollTo({
       top: 0,
       behavior: "instant",
@@ -83,32 +96,11 @@ export const DataProvider = ({ children }) => {
     setElectronics(electronicsData);
   };
 
-  const handleChange = (e) => {
-    const newValue = e.target.value;
-    setValue(newValue);
-
-    if(newValue.length === 0){
-      setActiveSearchList(false)
-    }
-    
-    if(newValue.length > 0){
-        const search = products.filter(product => product.title.toLowerCase().includes(newValue.toLowerCase())).slice(0,8);
-        setSearchList(search)
-        console.log(search)
-        setActiveSearchList(true)
-    } 
-  };
-
-  const handleSearch = (e) => {
-    e.preventDefault();
-    console.log(`${category} ${value}`);
-    setValue("");
-  };
-
+  // handling popstate events
   const handlePopState = () => {
+    setActiveSearchList(false);
+    setValue("");
     setCategory("All");
-    const newUrl = window.location.pathname;
-    if (newUrl.match(/^\/products\/(\d+)$/)) setCategory(product.category);
   };
 
   useEffect(() => {
@@ -119,8 +111,76 @@ export const DataProvider = ({ children }) => {
     };
   });
 
+  // handling search logic nad results
+  const handleSearch = (e) => {
+    e.preventDefault();
+    console.log(`${category} ${value}`);
+    // if (value.length > 0 && categoryList.length > 0) {
+    //   const newSearchList = categoryList
+    //     .filter((search) =>
+    //       search.title.toLowerCase().includes(value.toLowerCase())
+    //     )
+    //     .slice(0, 8);
+    //   setSearchList(newSearchList);
+    // }
+  };
+
+  const handleChange = (e) => {
+    const newValue = e.target.value;
+    setValue(newValue);
+
+    if (newValue.length === 0) {
+      setSearchList([]);
+      setActiveSearchList(false);
+    }
+    handleCategorySearch(category.trim());
+  };
+
+  const handleCategorySearch = (category) => {
+    let filterSearch = [];
+
+    switch (category) {
+      case "men's clothing":
+        filterSearch = cloths;
+        break;
+      case "women's clothing":
+        filterSearch = Wcloths;
+        break;
+      case "electronics":
+        filterSearch = electronics;
+        break;
+      case "jewelery":
+        filterSearch = jewelerys;
+        break;
+      default:
+        filterSearch = products;
+        break;
+    }
+    setCategoryList(filterSearch);
+  };
+
+  useEffect(() => {
+    if (category) {
+      handleCategorySearch(category.trim());
+    }
+  }, [category]);
+
+  useEffect(() => {
+    if (value.length > 0 && categoryList.length > 0) {
+      const newSearchList = categoryList
+        .filter((search) =>
+          search.title.toLowerCase().includes(value.toLowerCase())
+        )
+        .slice(0, 8);
+      setSearchList(newSearchList);
+      setActiveSearchList(true);
+    }
+  }, [categoryList, value]);
+
+  // fetching products from api, then updating othet states
   useEffect(() => {
     getProducts();
+    setValue("");
     setActiveSearchList(false);
   }, []);
 
@@ -133,20 +193,18 @@ export const DataProvider = ({ children }) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [products]);
 
-
-  // fetching cart save data
-  useEffect(() => {
-    const savedCart = JSON.parse(sessionStorage.getItem("cart"));
-    if (savedCart) setAddToCart(savedCart);
-  }, []);
-  
   // handling cart save, price sum, count
   useEffect(() => {
-    if (addToCart.length === 0) return sessionStorage.removeItem("cart");
+    const savedCart = JSON.parse(localStorage.getItem("cart"));
+    if (savedCart) setAddToCart(savedCart);
+  }, []);
+
+  useEffect(() => {
+    if (addToCart.length === 0) return;
 
     const selectedItems = addToCart.filter((item) => item.selected === true);
 
-    sessionStorage.setItem("cart", JSON.stringify(addToCart));
+    localStorage.setItem("cart", JSON.stringify(addToCart));
 
     const newPrice = selectedItems
       .reduce((sum, item) => sum + item.price * Math.floor(item.count), 0)
@@ -165,11 +223,18 @@ export const DataProvider = ({ children }) => {
     setShow((prevShow) => !prevShow);
   };
 
+  // handling select,deselect,add,remove
   const handleSelected = (id) => {
     const updatedCart = [...addToCart];
     const cart = updatedCart.find((item) => item.id === id);
     cart.selected = !cart.selected;
     setAddToCart(updatedCart);
+  };
+
+  const handleDselected = () => {
+    const updatedCart = [...addToCart];
+    const newCart = updatedCart.map((item) => ({ ...item, selected: false }));
+    setAddToCart(newCart);
   };
 
   const handleCartAdd = (product) => {
@@ -191,18 +256,228 @@ export const DataProvider = ({ children }) => {
 
       const filteredCart = updatedCart.filter((item) => item.count > 0);
 
+      localStorage.setItem("cart", JSON.stringify(filteredCart));
+
       return filteredCart;
     });
   };
+
+  // handling category selection, rating selection
+  const handleCategorySelect = (category) => {
+    let selectedCategory = [];
+    let minMaxprice = [];
+
+    if (products) {
+      switch (category) {
+        case "men's clothing":
+          if (cloths) selectedCategory = cloths;
+          minMaxprice = [
+            { value: 0 },
+            { value: 25 },
+            { value: 50 },
+            { value: 75 },
+            { value: 100 },
+            { value: 125 },
+          ];
+          setMin(0);
+          setMax(125);
+          setMinMax([0, 125]);
+          setStep(25);
+          break;
+        case "women's clothing":
+          if (Wcloths) selectedCategory = Wcloths;
+          minMaxprice = [
+            { value: 0 },
+            { value: 25 },
+            { value: 50 },
+            { value: 75 },
+            { value: 100 },
+            { value: 125 },
+          ];
+          setMin(0);
+          setMax(125);
+          setMinMax([0, 125]);
+          setStep(25);
+          break;
+        case "electronics":
+          if (electronics) selectedCategory = electronics;
+          minMaxprice = [
+            { value: 0 },
+            { value: 200 },
+            { value: 400 },
+            { value: 600 },
+            { value: 800 },
+            { value: 1000 },
+          ];
+          setMin(0);
+          setMax(1000);
+          setMinMax([0, 1000]);
+          setStep(200);
+          break;
+        case "jewelery":
+          if (jewelerys) selectedCategory = jewelerys;
+          minMaxprice = [
+            { value: 0 },
+            { value: 200 },
+            { value: 400 },
+            { value: 600 },
+            { value: 800 },
+            { value: 1000 },
+          ];
+          setMin(0);
+          setMax(1000);
+          setMinMax([0, 1000]);
+          setStep(200);
+          break;
+
+        default:
+          selectedCategory = products;
+          minMaxprice = [
+            { value: 0 },
+            { value: 200 },
+            { value: 400 },
+            { value: 600 },
+            { value: 800 },
+            { value: 1000 },
+          ];
+          setMin(0);
+          setMax(1000);
+          setMinMax([0, 1000]);
+          setStep(200);
+          break;
+      }
+    }
+    setValue("");
+    setSearchList([]);
+    setActiveSearchList(false);
+    setCategory(category);
+    setSelect(category);
+    setMinMaxPriceRange(minMaxprice);
+    setSelectedItems(selectedCategory);
+  };
+
+  const handleRatingSelect = (newRating) => {
+    setRating(newRating);
+    setRatingSelect(newRating);
+  };
+
+  //handling Products page reload
+  useEffect(() => {
+    const savedItems = JSON.parse(sessionStorage.getItem("filterItemsByPrice"));
+    if (savedItems) {
+      const {
+        select,
+        sortedProducts,
+        minMaxPriceRange,
+        minMax,
+        min,
+        max,
+        step,
+        ratingSelect,
+        rating,
+        hover,
+      } = savedItems;
+      setActiveSearchList(false);
+      setSelect(select);
+      setMinMaxPriceRange(minMaxPriceRange);
+      setSelectedItems(sortedProducts);
+      setMax(max);
+      setMin(min);
+      setMinMax(minMax);
+      setStep(step);
+      setRatingSelect(ratingSelect);
+      setRating(rating);
+      setHover(hover);
+    }
+  }, []);
+
+  useEffect(() => {
+    if (select === "") return;
+    if (ratingSelect === null && rating === null) return;
+    if (
+      products.length === 0 ||
+      cloths.length === 0 ||
+      Wcloths.length === 0 ||
+      electronics.length === 0 ||
+      jewelerys.length === 0
+    )
+      return;
+
+    const handleFilterProducts = () => {
+      let sortedProducts = [];
+      switch (select) {
+        case "men's clothing":
+          sortedProducts = cloths.filter(
+            (product) =>
+              product.price >= minMax[0] &&
+              product.price <= minMax[1] &&
+              product.rating.rate >= ratingSelect
+          );
+          break;
+        case "women's clothing":
+          sortedProducts = Wcloths.filter(
+            (product) =>
+              product.price >= minMax[0] &&
+              product.price <= minMax[1] &&
+              product.rating.rate >= ratingSelect
+          );
+          break;
+        case "electronics":
+          sortedProducts = electronics.filter(
+            (product) =>
+              product.price >= minMax[0] &&
+              product.price <= minMax[1] &&
+              product.rating.rate >= ratingSelect
+          );
+          break;
+        case "jewelery":
+          sortedProducts = jewelerys.filter(
+            (product) =>
+              product.price >= minMax[0] &&
+              product.price <= minMax[1] &&
+              product.rating.rate >= ratingSelect
+          );
+          break;
+        default:
+          sortedProducts = products.filter(
+            (product) =>
+              product.price >= minMax[0] &&
+              product.price <= minMax[1] &&
+              product.rating.rate >= ratingSelect
+          );
+          break;
+      }
+      sessionStorage.setItem(
+        "filterItemsByPrice",
+        JSON.stringify({
+          select,
+          sortedProducts,
+          minMaxPriceRange,
+          minMax,
+          min,
+          max,
+          step,
+          rating,
+          ratingSelect,
+          hover,
+        })
+      );
+      setSelectedItems(sortedProducts);
+    };
+    handleFilterProducts();
+  }, [minMax, select, ratingSelect]);
 
   return (
     <AppContext.Provider
       value={{
         value,
+        setValue,
         handleChange,
         handleSearch,
         searchList,
-        activeSerchList,
+        setSearchList,
+        activeSearchList,
+        setActiveSearchList,
         category,
         setCategory,
         show,
@@ -224,6 +499,27 @@ export const DataProvider = ({ children }) => {
         price,
         count,
         handleSelected,
+        handleDselected,
+        select,
+        setSelect,
+        handleCategorySelect,
+        selectedItems,
+        setSelectedItems,
+        minMax,
+        setMinMax,
+        minMaxPriceRange,
+        setMinMaxPriceRange,
+        min,
+        setMin,
+        max,
+        setMax,
+        step,
+        setStep,
+        handleRatingSelect,
+        rating,
+        hover,
+        setHover,
+        ratingSelect,
       }}
     >
       {children}

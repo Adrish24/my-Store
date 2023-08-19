@@ -4,7 +4,7 @@ import { useContext, useRef } from "react";
 import AppContext from "../../../context/AppContext";
 
 const Category = () => {
-  const {show, setShow, handleShow, category} = useContext(AppContext)
+  const {show, setShow, handleShow, category } = useContext(AppContext)
   const containerRef = useRef();
 
   
@@ -15,6 +15,8 @@ const Category = () => {
   };
 
   document.addEventListener("click", handleOutsideClick);
+
+  
 
   return (
     <>
@@ -35,13 +37,15 @@ const Category = () => {
       select-none 
       p-2
       ${show? 'bg-zinc-300 ring ring-yellow-400': ''}
+      whitespace-nowrap
+      sm:text-2xs
       `}
       >
         <div>{category}</div>
         <div>
           <RiArrowDropDownLine size={20} />
         </div>
-        {show && <Categories show={show} />}
+        {<Categories show={show} />}
       </div>
     </>
   );

@@ -51,3 +51,11 @@ body{
 .searchList{
   width: 600px;
 }
+
+.text-overflow {
+  display: -webkit-box;
+  -webkit-line-clamp: 2; /* Number of lines to show */
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+

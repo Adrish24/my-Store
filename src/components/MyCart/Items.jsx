@@ -10,11 +10,12 @@ import { Link } from "react-router-dom";
 const Items = ({ item }) => {
   
 
-  const { addToCart, setAddToCart, handleCartAdd, handleCartRemove, handleSelected } =
+  const { addToCart, setAddToCart, handleCartAdd, handleCartRemove, handleSelected, getSingleProduct } =
     useContext(AppContext);
 
   const removeItem = () => {
     const newItems = addToCart.filter((it) => it.id !== item.id);
+    localStorage.setItem('cart', JSON.stringify(newItems));
     setAddToCart(newItems);
   };
 
@@ -27,7 +28,7 @@ const Items = ({ item }) => {
       <img className="object-contain w-40 h-40 p-2" src={item.image} />
       <div className="flex flex-col w-7/12 border-r border-slate-300">
         <div className="details ml-2 border-b border-slate-300">
-          <Link to={`/products/${item.id}`} className="text-lg whitespace-normal">{item.title}</Link>
+          <Link to={`/products/${item.category}/${item.id}`} onClick={() => getSingleProduct(item.id)} className="text-lg whitespace-normal">{item.title}</Link>
           <div className="priceTag flex">
             <span className="text-xs mt-1 font-semibold">$</span>
             <span className="text-lg font-semibold flex-1">{item.price}</span>
@@ -68,7 +69,7 @@ const Items = ({ item }) => {
           </button>
         </div>
         <div className="flex-1 flex justify-center items-center">
-          <button className="bg-orange-600 py-2 px-3 font-semibold text-white rounded-sm drop-shadow-lg">
+          <button className="bg-orange-600 py-2 px-3 font-semibold text-white rounded-sm drop-shadow-lg xs:text-xs sm:text-sm whitespace-nowrap">
             Place Order
           </button>
         </div>

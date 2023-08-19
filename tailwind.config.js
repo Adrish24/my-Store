@@ -6,6 +6,8 @@ export default {
   ],
   theme: {
     screens: {
+      '2xs': {'min': '415px', 'max': '519px'},
+      'xs': {'min':'520px', 'max':'639px'},
       'sm': {'min': '640px', 'max': '767px'},
       // => @media (min-width: 640px and max-width: 767px) { ... }
 
@@ -26,6 +28,10 @@ export default {
       fontFamily:{
         'montserrat': ['Montserrat', 'sans-serif']
       },
+      fontSize:{
+        '2xs':'0.5rem',
+        '3xs': '0.25rem'
+      }
     },
   },
   plugins: [],

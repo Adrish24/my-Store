@@ -4,17 +4,12 @@ import { homeData } from '../../../data'
 import { useContext } from 'react';
 import AppContext from '../../../context/AppContext';
 
-// eslint-disable-next-line react/prop-types
-const Categories = ({ show }) => {
-  
-  const { category, setCategory } = useContext(AppContext) 
-
-  const uniqeCategories = new Set();
-  homeData.map((item) => uniqeCategories.add(item.category, item.id));
+const uniqeCategories = new Set();
+  homeData.forEach((item) => uniqeCategories.add(item.category, item.id));
 
   const All = ['All categories']
 
-  const options = [...All.map((category) => ({
+export const options = [...All.map((category) => ({
     category: category,
     id: 0,
   })),...Array.from(uniqeCategories).map((category, index) => ({
@@ -22,18 +17,18 @@ const Categories = ({ show }) => {
     id: index +1,
   }))]
 
+// eslint-disable-next-line react/prop-types
+const Categories = ({ show }) => {
   
+  const { setCategory } = useContext(AppContext) 
 
-  const handleClick = (e) => {
+  const handleSelect = (e) => {
     const text = e.target.textContent;
     setCategory(text);
-    console.log(category)
   };
 
-  
-
   return (
-    <div className={show ? "flex" : "hidden"}>
+    <div className={show ? "flex z-50" : "hidden"}>
       <div
         className="
     absolute 
@@ -56,7 +51,7 @@ const Categories = ({ show }) => {
         {options &&
           options.map((option) => (
             <span
-              onClick={(e) => handleClick(e)}
+              onClick={handleSelect}
               className="hover:bg-slate-200 text-sm"
               key={option.id}
             >
@@ -69,3 +64,4 @@ const Categories = ({ show }) => {
 };
 
 export default Categories;
+

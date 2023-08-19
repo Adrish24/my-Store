@@ -34,13 +34,13 @@ const Preview = () => {
           <img className="object-contain max-h-96 w-96" src={product.image} />
         </div>
         {isOpen && (
-          <div className="zoom drop-shadow-2xl">
+          <div className="zoom drop-shadow-2xl xs:cursor-not-allowed">
             <img src={product.image} alt="" />
           </div>
         )}
         <div className="flex justify-evenly gap-2 text-white">
           <button
-            onClick={() => handleCartAdd(product, true)}
+            onClick={() => handleCartAdd(product)}
             className="bg-yellow-500 px-2 py-3 w-full rounded-sm drop-shadow-lg"
           >
             ADD TO CART
