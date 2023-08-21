@@ -14,7 +14,7 @@ const Category = () => {
     }
   };
 
-  document.addEventListener("click", handleOutsideClick);
+  window.addEventListener("click", handleOutsideClick);
 
   
 

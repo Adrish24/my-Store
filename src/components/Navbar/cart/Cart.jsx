@@ -15,8 +15,8 @@ const Cart = () => {
   return (
     <>
       <div>
-        <FiShoppingCart size={25} />
-        <span className="flex justify-center items-center absolute translate-x-2 -top-1 left-6 xs:left-1 bg-red-600 w-5 h-5 rounded-full text-xs">
+        <FiShoppingCart className="xs:text-lg" />
+        <span className="flex justify-center items-center absolute translate-x-2 -top-1 xs:-top-1 left-6 xs:left-2 bg-red-600 w-5 xs:w-4 h-5 xs:h-4 rounded-full text-xs">
           {count}
         </span>
       </div>

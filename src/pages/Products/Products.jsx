@@ -20,7 +20,7 @@ const Products = () => {
 
   return (
     <div className="shop flex flex-col justify-center items-center bg-slate-300 w-full pt-16 select-none">
-      <div className="flex w-full min-h-screen 3xl:w-10/12 p-2 gap-2">
+      <div className="flex md:w-full min-h-screen lg:w-full xl:w-full 2xl:w-full 3xl:w-9/12 p-2 gap-2">
         <Filters/>
         <SearchResults/>
       </div>

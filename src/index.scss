@@ -35,18 +35,6 @@ body{
 }
 
 
-.zoom {
-  display: flex;
-  justify-content: center;
-  position: absolute;
-  top: 0;
-  left: 35rem;
-  height: 600px;
-  width: 800px;
-  overflow: hidden;
-  object-fit: contain;
-  background-color: white;
-}
 
 .searchList{
   width: 600px;
@@ -54,8 +42,14 @@ body{
 
 .text-overflow {
   display: -webkit-box;
-  -webkit-line-clamp: 2; /* Number of lines to show */
+  -webkit-line-clamp: 2; 
   -webkit-box-orient: vertical;
   overflow: hidden;
 }
 
+.text-overflow-2 {
+  display: -webkit-box;
+  -webkit-line-clamp: 4; 
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}

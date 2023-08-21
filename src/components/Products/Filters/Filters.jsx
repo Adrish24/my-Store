@@ -5,7 +5,7 @@ import PriceSlider from "./PriceSlider";
 
 const Filters = () => {
   return (
-    <div className="bg-slate-300 w-72">
+    <div className="bg-slate-300 w-72 md:w-60">
       <div className="flex flex-col bg-white rounded-sm">
         <h1 className="text-xl font-semibold border-b border-slate-200 p-3">
           Filters

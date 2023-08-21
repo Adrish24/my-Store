@@ -17,8 +17,8 @@ const MyCart = () => {
 
   return (
     <div className="cart flex flex-col items-center justify-center bg-slate-300 w-full pt-16 select-none">
-      <div className="xl:w-full 2xl:w-11/12 3xl:w-9/12 flex sm:flex-col xs:flex-col justify-center bg-slate-300 p-2 min-h-screen">
-        <div className="w-1/2 sm:w-full xs:w-full flex-1">
+      <div className="xl:w-full 2xl:w-11/12 3xl:w-9/12 flex sm:flex-col sm:justify-start xs:justify-start xs:flex-col justify-center bg-slate-300 p-2 min-h-screen">
+        <div className="w-1/2 sm:w-full xs:w-full md:flex-1 lg:flex-1 xl:flex-1 2xl:flex-1 3xl:flex-1">
           <div className="bg-white w-full h-auto py-3 mt-2 rounded-sm drop-shadow-xl">
             <div className="title flex flex-col justify-center p-3">
               <h1 className="text-2xl font-semibold">Shopping Cart</h1>

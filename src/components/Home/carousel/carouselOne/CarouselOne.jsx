@@ -53,6 +53,9 @@ const CarouselOne = () => {
     if(window.innerWidth <= 768 && window.innerWidth >= 640){
       if (carouselItemTwo.length === 1) setScrollX(50);
     }
+    if(window.innerWidth <= 640 && window.innerWidth >= 520){
+      if (carouselItemTwo.length === 1) setScrollX(65);
+    }
   };
 
   
@@ -74,7 +77,7 @@ const CarouselOne = () => {
         style={{ transform: `translateX(-${activeIndex * scrollX}%)`, maxWidth: '100%' }}
       >
         {carouselItems.map((items, index) => (
-          <div key={index} className="w-full h-60 inline-flex gap-2 sm:w-screen md:w-screen">
+          <div key={index} className="min-w-full h-60 inline-flex flex-shrink-0 gap-2 xs:w-screen sm:w-screen md:w-screen">
             {items.map((item) => (
               <CarouselOneItems key={item.id} item={item} />
             ))}

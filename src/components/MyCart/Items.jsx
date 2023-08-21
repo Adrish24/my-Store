@@ -47,7 +47,7 @@ const Items = ({ item }) => {
           </button>
         </div>
       </div>
-      <div className="flex-1 flex flex-col items-center">
+      <div className="flex-1 flex flex-col items-center ml-2">
         <div className="flex pt-4 mb-3 drop-shadow-lg">
           <button
             className="bg-slate-300 w-6 rounded-l-md p-1"

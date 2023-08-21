@@ -13,17 +13,17 @@ const Hero = () => {
       <Carousel indicators={false}>
         <Carousel.Item>
           <Link>
-          <img className="h-56 w-full" src={carousel} alt="" />
+          <img className="h-56 xs:h-40 w-full" src={carousel} alt="" />
           </Link>
         </Carousel.Item>
         <Carousel.Item>
           <Link>
-          <img className="h-56 w-full" src={carousel1} alt="" />
+          <img className="h-56 xs:h-40 w-full" src={carousel1} alt="" />
           </Link>
         </Carousel.Item>
         <Carousel.Item>
           <Link>
-          <img className="h-56 w-full" src={carousel2} alt="" />
+          <img className="h-56 xs:h-40 w-full" src={carousel2} alt="" />
           </Link>
         </Carousel.Item>
       </Carousel>

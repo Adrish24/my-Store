@@ -1,24 +1,13 @@
-import { useContext, useState } from "react";
+import { useContext } from "react";
 import AppContext from "../../context/AppContext";
 import { Link } from "react-router-dom";
 
 const Preview = () => {
-  const [isOpen, setOpen] = useState(false);
   const { product, handleCartAdd } = useContext(AppContext);
-
-  const handleZoomIn = () => {
-    setOpen(true);
-  };
-  const handleZoomOut = () => {
-    setOpen(false);
-  };
-
   return (
     product && (
       <div className="flex flex-col w-full sticky">
         <div
-          onMouseEnter={handleZoomIn}
-          onMouseLeave={handleZoomOut}
           className="
           flex
           justify-center
@@ -33,11 +22,6 @@ const Preview = () => {
         >
           <img className="object-contain max-h-96 w-96" src={product.image} />
         </div>
-        {isOpen && (
-          <div className="zoom drop-shadow-2xl xs:cursor-not-allowed">
-            <img src={product.image} alt="" />
-          </div>
-        )}
         <div className="flex justify-evenly gap-2 text-white">
           <button
             onClick={() => handleCartAdd(product)}
