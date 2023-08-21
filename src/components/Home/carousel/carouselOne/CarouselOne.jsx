@@ -77,7 +77,7 @@ const CarouselOne = () => {
         style={{ transform: `translateX(-${activeIndex * scrollX}%)`, maxWidth: '100%' }}
       >
         {carouselItems.map((items, index) => (
-          <div key={index} className="min-w-full h-60 inline-flex flex-shrink-0 gap-2 xs:w-screen sm:w-screen md:w-screen">
+          <div key={index} className=" h-60 inline-flex flex-shrink-0 gap-2 xs:w-screen sm:w-screen md:w-screen">
             {items.map((item) => (
               <CarouselOneItems key={item.id} item={item} />
             ))}
