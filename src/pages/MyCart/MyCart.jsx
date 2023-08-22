@@ -10,6 +10,10 @@ const MyCart = () => {
   const {  price, count, setCategory, setValue, setSearchList, handleDselected  } = useContext(AppContext);
 
   useEffect(() => {
+    window.scrollTo({
+      top: 0,
+      behavior: "instant",
+    });
     setValue("")
     setSearchList([])
     setCategory('All')

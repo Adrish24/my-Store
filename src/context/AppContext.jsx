@@ -96,8 +96,13 @@ export const DataProvider = ({ children }) => {
     setElectronics(electronicsData);
   };
 
+
   // handling popstate events
   const handlePopState = () => {
+      window.scrollTo({
+        top: 0,
+        behavior: "instant",
+      });
     setActiveSearchList(false);
     setValue("");
     setCategory("All");
@@ -109,7 +114,7 @@ export const DataProvider = ({ children }) => {
     return () => {
       window.removeEventListener("popstate", handlePopState);
     };
-  });
+  },[]);
 
   // handling search logic nad results
   const handleSearch = (e) => {

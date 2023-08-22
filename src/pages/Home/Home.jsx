@@ -10,8 +10,16 @@ import CarouselTwo from "../../components/Home/carousel/carouselTwo/CarouselTwo"
 import RatedItems from "../../components/Home/ratedItems/RatedItems"
 
 import "bootstrap/dist/css/bootstrap.min.css";
+import { useEffect } from "react";
 
 const Home = () => {
+
+  useEffect(() => {
+    window.scrollTo({
+      top: 0,
+      behavior: "instant",
+    });
+  },[])
 
 
   const style = "drop-shadow-sm bg-white 2xs:h-60 3xs:h-48"

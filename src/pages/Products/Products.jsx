@@ -12,11 +12,15 @@ const Products = () => {
       top: 0,
       behavior: "instant",
     });
+  },[])
+
+  useEffect(() => {
     setSearchList([])
     if(select !== ''){
       setCategory(select)
     }
   },[select])
+
 
   return (
     <div className="shop flex flex-col justify-center items-center bg-slate-300 w-full pt-16 select-none">
