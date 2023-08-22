@@ -50,6 +50,7 @@ const Navbar = () => {
       <div
         className="
       flex 
+      3xs:flex-auto
       2xs:flex-auto
       sm:flex-1 
       xs:flex-1 
@@ -57,19 +58,24 @@ const Navbar = () => {
       items-center 
       justify-start 
       md:justify-center 
-      xs:justify-center 
+      xs:justify-center
+      2xs:justify-around 
       relative"
       >
+        <SlOptionsVertical
+          className="hidden 3xs:block 2xs:block xs:block  cursor-pointer 3xs:mx-2 2xs:mx-2 xs:mx-4"
+          onClick={handlePopUpMenu}
+        />
         <Link
           to="/"
           onClick={handleOnlick}
-          className="2xs:text-2xs 2xs:font-bold xs:text-xs mr-10 md:mr-3 lg:mr-5 xl:mr-5 2xs:mx-2 xs:mx-2 sm:mx-2 font-semibold"
+          className="3xs:hidden 2xs:hidden xs:hidden mr-10 md:mr-3 lg:mr-5 xl:mr-5font-semibold"
         >
           myStore
         </Link>
         <SearchBar />
       </div>
-      <div className="flex 2xs:flex-auto items-end 2xs:justify-start justify-center ml-10 md:m-0 sm:m-0 xs:m-0 2xs:ml-32">
+      <div className="flex items-end justify-center  ml-10 md:m-0 sm:m-0 xs:m-0 2xs:mx-2 3xs:mx-2">
         <Link
           to="/login"
           className="font-semibold 3xl:px-5 2xl:px-5 xl:px-4 lg:px-4 md:px-3 sm:px-2 xs:px-2 sm:ml-2  xs:hidden 2xs:hidden 3xs:hidden"
@@ -83,24 +89,21 @@ const Navbar = () => {
           <span className="text-xs">Returns</span>
           <span className="font-semibold">& Order</span>
         </Link>
-        <SlOptionsVertical
-          className="hidden 2xs:block xs:block xs:mx-4 cursor-pointer"
-          onClick={handlePopUpMenu}
-        />
         <div
           ref={optionsRef}
-          className={`flex flex-col bg-white absolute top-12 right-16 p-1 rounded-sm drop-shadow-2xl ${
+          className={`flex flex-col bg-white absolute top-12 left-2 p-1 rounded-sm drop-shadow-2xl ${
             show ? "flex" : "hidden"
           }`}
         >
+          <Link to={`/`} onClick={handleSelect} className="text-sm hover:bg-slate-100">Home</Link>
           <Link
             to={`/login`}
-            className="text-xs mb-1 hover:bg-sl"
+            className="text-sm mb-1 hover:bg-slate-100"
             onClick={handleSelect}
           >
             Login
           </Link>
-          <Link className="text-xs mb-1" onClick={handleSelect}>
+          <Link className="text-sm mb-1 hover:bg-slate-100" onClick={handleSelect}>
             Returns & Order
           </Link>
         </div>

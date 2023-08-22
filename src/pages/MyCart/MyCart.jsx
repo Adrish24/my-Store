@@ -17,12 +17,12 @@ const MyCart = () => {
 
   return (
     <div className="cart flex flex-col items-center justify-center bg-slate-300 w-full pt-16 select-none">
-      <div className="xl:w-full 2xl:w-11/12 3xl:w-9/12 flex 2xs:flex-col sm:flex-col sm:justify-start 3xs:justify-start 2xs:justify-start xs:justify-start xs:flex-col justify-center bg-slate-300 p-2 min-h-screen">
+      <div className="xl:w-full 2xl:w-11/12 3xl:w-9/12 flex 3xs:flex-col 2xs:flex-col sm:flex-col sm:justify-start 3xs:justify-start 2xs:justify-start xs:justify-start xs:flex-col justify-center bg-slate-300 p-2 min-h-screen">
         <div className="w-1/2 3xs:w-full 2xs:w-full sm:w-full xs:w-full md:flex-1 lg:flex-1 xl:flex-1 2xl:flex-1 3xl:flex-1">
-          <div className="bg-white w-full h-auto py-3 mt-2 rounded-sm drop-shadow-xl">
+          <div className="bg-white w-full h-auto 3xl:p-3 2xl:p-3 xl:p-3 lg:p-3 md:p-3 sm:p-2 xs:p-2 2xs:p-2 3xs:p-2 mt-2 rounded-sm drop-shadow-xl">
             <div className="title flex flex-col justify-center p-3">
-              <h1 className="text-2xl font-semibold 2xs:text-lg">Shopping Cart</h1>
-              <Link className="text-orange-500 2xs:text-xs" onClick={handleDselected}>Deselect all items</Link>
+              <h1 className="text-2xl font-semibold 2xs:text-lg 3xs:text-sm">Shopping Cart</h1>
+              <Link className="text-orange-500 2xs:text-xs 3xs:text-2xs" onClick={handleDselected}>Deselect all items</Link>
             <ItemsList />
             </div>
           </div>

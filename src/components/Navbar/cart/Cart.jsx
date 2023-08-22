@@ -16,7 +16,7 @@ const Cart = () => {
   return (
     <>
       <div>
-        <FiShoppingCart size={20} className="xs:text-lg 2xs:text-sm text-xl" />
+        <FiShoppingCart className="xs:text-lg 2xs:text-2xl 3xs:text-2xl text-xl" />
         <span
           className="
         flex 
@@ -26,8 +26,10 @@ const Cart = () => {
         translate-x-2 
         -top-1 
         xs:-top-1 
+        3xs:-top-2
         left-6 
         xs:left-2 
+        3xs:left-0
         2xs:left-0 
         xl:left-5
         lg:left-5
@@ -46,7 +48,7 @@ const Cart = () => {
           {count}
         </span>
       </div>
-      <h1 className="2xs:hidden">Cart</h1>
+      <h1 className="2xs:hidden 3xs:hidden">Cart</h1>
     </>
   );
 };

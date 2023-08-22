@@ -59,6 +59,9 @@ const CarouselOne = () => {
     if (window.innerWidth <= 519 && window.innerWidth >= 415) {
       if (carouselItemTwo.length === 1) setScrollX(20);
     }
+    if (window.innerWidth <= 414 && window.innerWidth >= 360) {
+      if (carouselItemTwo.length === 1) setScrollX(25);
+    }
   };
 
   // handling left and right show
@@ -92,7 +95,7 @@ const CarouselOne = () => {
         {carouselItems.map((items, index) => (
           <div
             key={index}
-            className="2xs:h-40 xs:h-52 sm:h-52 md:h-52 h-60 inline-flex flex-shrink-0 gap-2 "
+            className="3xs:h-36 2xs:h-40 xs:h-52 sm:h-52 md:h-52 h-60 inline-flex flex-shrink-0 gap-2 "
           >
             {items.map((item) => (
               <CarouselOneItems key={item.id} item={item} />
@@ -111,7 +114,7 @@ const CarouselOne = () => {
         h-20 w-10 
         xs:h-14 xs:w-8
         2xs:h-14 2xs:w-8
-        3xs:h-14 3xs:w-8
+        3xs:h-12 3xs:w-6
         right-0 
         flex 
         justify-center 
@@ -125,7 +128,7 @@ const CarouselOne = () => {
         ${rightDisabled ? " bg-slate-200" : "bg-white"}`}
         disabled={rightDisabled}
       >
-        <GrNext className="2xs:text-xs text-xl" />
+        <GrNext className="2xs:text-xs 3xs:text-xs text-xl" />
       </button>
       <button
         onClick={() => {
@@ -138,7 +141,7 @@ const CarouselOne = () => {
         h-20 w-10 
         xs:h-14 xs:w-8
         2xs:h-14 2xs:w-8
-        3xs:h-14 3xs:w-8
+        3xs:h-12 3xs:w-6
         -left-1
         flex 
         justify-center 
@@ -152,7 +155,7 @@ const CarouselOne = () => {
         ${leftDisabled ? "bg-slate-200" : "bg-white"}`}
         disabled={leftDisabled}
       >
-        <GrPrevious className="2xs:text-xs text-xl" />
+        <GrPrevious className="2xs:text-xs 3xs:text-xs text-xl" />
       </button>
     </div>
   );

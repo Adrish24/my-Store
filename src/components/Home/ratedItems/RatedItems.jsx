@@ -14,6 +14,7 @@ const RatedItems = () => {
     3xs:justify-center 
     2xs:justify-center 
     xs:justify-center 
+    3xs:flex-wrap 
     2xs:flex-wrap 
     xs:flex-wrap 
     sm:flex-wrap 

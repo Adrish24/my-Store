@@ -24,12 +24,12 @@ const Rating = ({ rating }) => {
 
   return (
     <div
-      className="relative flex justify-center items-center mb-2 hover:text-yellow-800"
+      className="relative flex justify-center items-center mb-2 hover:text-yellow-800 3xs:text-2xs"
       onMouseEnter={() => setShow(true)}
       onMouseLeave={() => setShow(false)}
     >
       {ratingStar}
-      <span className="text-sm ml-2 text-slate-500 2xs:text-xs">({rating.count})</span>
+      <span className="text-sm ml-2 text-slate-500 2xs:text-xs 3xs:text-2xs">({rating.count})</span>
       {show && (
         <span className="absolute top-5  bg-black text-white font-thin text-xs p-1 border-white">
           {rating.rate} out of 5 stars

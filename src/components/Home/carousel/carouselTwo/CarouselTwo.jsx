@@ -66,7 +66,7 @@ const CarouselTwo = () => {
         style={{ transform: `translateX(-${activeIndex * 100}%)` }}
       >
         {carouselItems.map((items, index) => (
-          <div key={index} className="w-full 2xs:h-32 xs:h-32 sm:h-52 md:h-52 h-60 inline-flex gap-2">
+          <div key={index} className="w-full 3xs:h-28 2xs:h-32 xs:h-32 sm:h-52 md:h-52 h-60 inline-flex gap-2">
             {items.map((item) => (
               <CarouselTwoItems key={item.id} item={item} />
             ))}
@@ -83,7 +83,7 @@ const CarouselTwo = () => {
         h-20 w-10 
         xs:h-14 xs:w-8
         2xs:h-14 2xs:w-8
-        3xs:h-14 3xs:w-8
+        3xs:h-12 3xs:w-6
         right-0 
         flex 
         justify-center 
@@ -98,7 +98,7 @@ const CarouselTwo = () => {
         }
         disabled={rightDisabled}
       >
-        <GrNext className="2xs:text-xs text-xl" />
+        <GrNext className="2xs:text-xs 3xs:text-xs text-xl" />
       </button>
       <button
         onClick={() => {
@@ -110,7 +110,7 @@ const CarouselTwo = () => {
         h-20 w-10 
         xs:h-16 xs:w-8
         2xs:h-12 2xs:w-8
-        3xs:h-14 3xs:w-8
+        3xs:h-12 3xs:w-6
         left-0 
         flex 
         justify-center 
@@ -124,7 +124,7 @@ const CarouselTwo = () => {
         }
         disabled={leftDisabled}
       >
-        <GrPrevious  className="2xs:text-xs text-xl"/>
+        <GrPrevious  className="2xs:text-xs 3xs:text-xs text-xl"/>
       </button>
     </div>
   );

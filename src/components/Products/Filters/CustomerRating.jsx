@@ -25,8 +25,8 @@ function CustomerRating() {
   // },[])
   
   return (
-    <div className="p-3 xs:p-2">
-      <h1 className="text-xs font-semibold uppercase mb-2 2xs:text-2xs">Customer Rating</h1>
+    <div className="3xl:p-3 2xl:p-3 xl:p-3 lg:p-3 md:p-3 xs:p-3 2xs:p-2 3xs:p-2">
+      <h1 className="text-xs font-semibold uppercase mb-2 2xs:text-2xs 3xs:text-2xs">Customer Rating</h1>
       <Box
         sx={{
           width: "100%",
@@ -40,6 +40,9 @@ function CustomerRating() {
             fontSize: '24px'
         }, 
         "@media (min-width: 415px) and (max-width: 519px)": {
+          fontSize: '16px'
+      },
+        "@media (min-width: 360px) and (max-width: 414px)": {
           fontSize: '16px'
       }
         }}

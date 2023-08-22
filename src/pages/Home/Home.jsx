@@ -14,7 +14,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 const Home = () => {
 
 
-  const style = "drop-shadow-sm bg-white 2xs:h-60"
+  const style = "drop-shadow-sm bg-white 2xs:h-60 3xs:h-48"
   const advertisements = "grid 3xs:grid-cols-2 2xs:grid-cols-2 xs:grid-cols-2 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-2 grid-cols-4 grid-flow-dense row-auto gap-3 bg-transparent mb-3 z-5"
   const carousels = "bg-white py-4 px-3 mb-3"
 
@@ -39,16 +39,16 @@ const Home = () => {
           </div>
         </div>
         <div className={carousels}>
-          <h1 className="font-semibold text-xl pb-3 2xs:text-lg">Best of Electronics</h1>
+          <h1 className="font-semibold text-xl pb-3 2xs:text-lg 3xs:text-base">Best of Electronics</h1>
           <CarouselOne/>
         </div>
         <div className={carousels}>
-          <h1 className="font-semibold text-xl pb-3 2xs:text-lg">Best of  Women&#39;s Clothing</h1>
+          <h1 className="font-semibold text-xl pb-3 2xs:text-lg 3xs:text-base">Best of  Women&#39;s Clothing</h1>
           <CarouselTwo/>
         </div>
       </div>
       <div className="bg-white w-full px-4 py-3">
-          <h1 className="font-semibold text-xl mb-3">Top 7 items you might like</h1>
+          <h1 className="font-semibold text-xl mb-3 3xs:text-base">Top 7 items you might like</h1>
           <RatedItems/>
       </div>
     </div>

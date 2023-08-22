@@ -38,7 +38,7 @@ const Category = () => {
       p-2
       ${show? 'bg-zinc-300 ring ring-yellow-400': ''}
       whitespace-nowrap
-      2xs:text-2xs
+      2xs:text-xs
       `}
       >
         <div>{category}</div>

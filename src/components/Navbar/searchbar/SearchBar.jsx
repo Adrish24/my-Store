@@ -11,7 +11,7 @@ const SearchBar = () => {
   const formRef = useRef();
 
   const searchBar =
-    "flex flex-1  items-center rounded-md bg-gray-200 xs:w-60 sm:w-72  md:w-10/12 lg:w-11/12 xl:w-11/12 2xl:w-full 3xl:w-full h-10 2xs:h-8";
+    "flex flex-1  items-center rounded-md bg-gray-200 xs:w-60 sm:w-72  md:w-10/12 lg:w-11/12 xl:w-11/12 2xl:w-full 3xl:w-full h-10 2xs:h-8 3xs:h-8";
 
   const handleOutsideClick = (e) => {
     if (formRef.current && !formRef.current.contains(e.target)) {
@@ -32,6 +32,7 @@ const SearchBar = () => {
     justify-center 
     items-center 
     rounded-md 
+    3xs:w-32
     xs:w-60 
     sm:w-72 
     md:w-10/12 
@@ -50,13 +51,13 @@ const SearchBar = () => {
           onClick={handleSearchListShow}
           type="text"
           placeholder="Search for Products"
-          className="flex-1 bg-transparent outline-none py-2 pr-2 2xs:p-0 xs:w-80"
+          className="flex-1 bg-transparent outline-none py-2 pr-2 xs:w-80 2xs:w-40 3xs:w-40"
         />
         <button
           type="submit"
-          className="flex justify-center items-center w-10 xs:w-10 sm:w-20 h-full hover:bg-slate-300 rounded-r-md "
+          className="flex justify-center items-center 3xs:w-5 w-10 xs:w-10 sm:w-20 h-full hover:bg-slate-300 rounded-r-md "
         >
-          <FiSearch className="sm:xs flex-1" />
+          <FiSearch className="flex-1" />
         </button>
       </form>
       <SearchList />
