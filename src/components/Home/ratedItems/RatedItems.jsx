@@ -8,7 +8,23 @@ const RatedItems = () => {
   const highestRatedItems = products.filter((item) => item.rating.rate >= 4);
 
   return (
-    <div className="flex xs:flex-wrap sm:flex-wrap md:flex-wrap gap-3 py-2 border-1 border-solid border-slate-300 rounded-md">
+    <div
+      className="
+    flex 
+    3xs:justify-center 
+    2xs:justify-center 
+    xs:justify-center 
+    2xs:flex-wrap 
+    xs:flex-wrap 
+    sm:flex-wrap 
+    md:flex-wrap 
+    gap-3 
+    py-2 
+    border-1 
+    border-solid 
+    border-slate-300 
+    rounded-md"
+    >
       {highestRatedItems.map((item) => (
         <Link
           to={`/products/${item.category}/${item.id}`}

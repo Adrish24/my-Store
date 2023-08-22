@@ -9,10 +9,10 @@ const Second = () => {
   return (
     <div className="py-3">
       <div className="flex flex-col">
-        <h1 className="pl-4 mb-3 text-xl font-semibold text-overflow">
+        <h1 className="pl-4 mb-3 text-xl font-semibold text-overflow 2xs:text-xs">
           Top in Men&#39;s Clothing
         </h1>
-        <div className="grid grid-cols-2 gap-2 px-3 h-60">
+        <div className="grid grid-cols-2 gap-2 px-3 h-60 2xs:h-36">
           {cloths &&
             cloths.map((cloth) => (
               <Link
@@ -25,11 +25,11 @@ const Second = () => {
                 key={cloth.id}
               >
                 <img
-                  className="h-20 lg:h-24 px-2 mb-1"
+                  className="h-20 lg:h-24 px-2 mb-1 2xs:h-10"
                   src={cloth.image}
                   alt="logo"
                 />
-                <p className="text-xs px-1 text-overflow">{cloth.title}</p>
+                <p className="text-xs px-1 text-overflow 2xs:text-2xs">{cloth.title}</p>
               </Link>
             ))}
         </div>

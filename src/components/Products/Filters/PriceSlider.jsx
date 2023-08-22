@@ -1,7 +1,7 @@
 import Box from "@mui/material/Box";
 import Slider from "@mui/material/Slider";
 
-import { useContext, useEffect } from "react";
+import { useContext } from "react";
 import AppContext from "../../../context/AppContext";
 
 function PriceSlider() {
@@ -12,8 +12,6 @@ function PriceSlider() {
     max,
     step,
     minMaxPriceRange,
-    select,
-    setCategory,
   } = useContext(AppContext);
 
   const minDistance = step;
@@ -28,16 +26,11 @@ function PriceSlider() {
     } else {
       setMinMax([minMax[0], Math.max(newValue[1], minMax[0] + minDistance)]);
     }
-    // sessionStorage.setItem('savedItems', JSON.stringify({minMax: minMax}))
   };
-
-  // useEffect(() => {
-  //   setCategory(select);
-  // },[])
 
   return (
     <Box sx={{ width: "100%", p: "16px", borderBottom: "1px solid #EEEEEE" }}>
-      <h1 className="text-xs font-semibold uppercase mb-2">Price</h1>
+      <h1 className="text-xs font-semibold uppercase mb-2 2xs:text-2xs">Price</h1>
       <Slider
         max={max}
         min={min}
@@ -55,11 +48,11 @@ function PriceSlider() {
         }}
       />
       <div className="flex justify-between">
-        <span className="border-2 border-slate-300 w-24 h-6 rounded-sm px-2 text-sm">
+        <span className="border-2 border-slate-300 w-24 h-6 xs:w-20 xs:h-6 2xs:w-12 2xs:h-6 rounded-sm px-2 text-sm xs:text-xs 2xs:text-2xs">
           {minMax[0] === 0 ? "Min" : `$${minMax[0]}`}
         </span>
         <span className="flex-1 text-center text-slate-400">to</span>
-        <span className="flex items-center border-2 border-solid border-slate-300 w-24 h-6 rounded-sm px-2 text-sm">
+        <span className="flex items-center border-2 border-solid border-slate-300 w-24 h-6 xs:w-20 xs:h-6  2xs:w-12 2xs:h-6 rounded-sm px-2 text-sm xs:text-xs 2xs:text-2xs">
           {`$${minMax[1]}`}
         </span>
       </div>

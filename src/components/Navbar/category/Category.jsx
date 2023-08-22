@@ -27,7 +27,7 @@ const Category = () => {
       relative 
       flex 
       justify-center 
-      w-auto 
+      w-auto
       items-center 
       h-full 
       bg-slate-300
@@ -38,7 +38,7 @@ const Category = () => {
       p-2
       ${show? 'bg-zinc-300 ring ring-yellow-400': ''}
       whitespace-nowrap
-      sm:text-2xs
+      2xs:text-2xs
       `}
       >
         <div>{category}</div>

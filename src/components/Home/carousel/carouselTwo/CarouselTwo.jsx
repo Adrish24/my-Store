@@ -37,6 +37,27 @@ const CarouselTwo = () => {
     setLeftDisabled(newIndex === 0)
   };
 
+  // const updateScrollX = () => {
+  //   if (window.innerWidth >= 1535) {
+  //     if (carouselItemTwo.length === 1) setScrollX(8.8);
+  //   }
+  //   if (window.innerWidth <= 1535 && window.innerWidth >= 1280) {
+  //     if (carouselItemTwo.length === 1) setScrollX(20);
+  //   }
+  //   if (window.innerWidth <= 1280 && window.innerWidth >= 1024) {
+  //     if (carouselItemTwo.length === 1) setScrollX(30);
+  //   }
+  //   if (window.innerWidth <= 1023 && window.innerWidth >= 768) {
+  //     if (carouselItemTwo.length === 1) setScrollX(40);
+  //   }
+  //   if (window.innerWidth <= 768 && window.innerWidth >= 640) {
+  //     if (carouselItemTwo.length === 1) setScrollX(50);
+  //   }
+  //   if (window.innerWidth <= 640 && window.innerWidth >= 520) {
+  //     if (carouselItemTwo.length === 1) setScrollX(65);
+  //   }
+  // };
+
   return (
     <div 
        className="flex flex-col justify-center relative bg-white overflow-hidden">
@@ -45,7 +66,7 @@ const CarouselTwo = () => {
         style={{ transform: `translateX(-${activeIndex * 100}%)` }}
       >
         {carouselItems.map((items, index) => (
-          <div key={index} className="w-full h-60 inline-flex gap-2">
+          <div key={index} className="w-full 2xs:h-32 xs:h-32 sm:h-52 md:h-52 h-60 inline-flex gap-2">
             {items.map((item) => (
               <CarouselTwoItems key={item.id} item={item} />
             ))}
@@ -60,6 +81,9 @@ const CarouselTwo = () => {
         absolute 
         z-5  
         h-20 w-10 
+        xs:h-14 xs:w-8
+        2xs:h-14 2xs:w-8
+        3xs:h-14 3xs:w-8
         right-0 
         flex 
         justify-center 
@@ -74,7 +98,7 @@ const CarouselTwo = () => {
         }
         disabled={rightDisabled}
       >
-        <GrNext size={20} />
+        <GrNext className="2xs:text-xs text-xl" />
       </button>
       <button
         onClick={() => {
@@ -84,6 +108,9 @@ const CarouselTwo = () => {
         absolute 
         z-5 
         h-20 w-10 
+        xs:h-16 xs:w-8
+        2xs:h-12 2xs:w-8
+        3xs:h-14 3xs:w-8
         left-0 
         flex 
         justify-center 
@@ -97,7 +124,7 @@ const CarouselTwo = () => {
         }
         disabled={leftDisabled}
       >
-        <GrPrevious size={20} />
+        <GrPrevious  className="2xs:text-xs text-xl"/>
       </button>
     </div>
   );

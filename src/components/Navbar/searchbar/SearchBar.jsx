@@ -11,7 +11,7 @@ const SearchBar = () => {
   const formRef = useRef();
 
   const searchBar =
-    "flex flex-1  items-center rounded-md bg-gray-200 xs:w-60 sm:w-72  md:w-10/12 lg:w-11/12 xl:w-11/12 2xl:w-full 3xl:w-full h-10";
+    "flex flex-1  items-center rounded-md bg-gray-200 xs:w-60 sm:w-72  md:w-10/12 lg:w-11/12 xl:w-11/12 2xl:w-full 3xl:w-full h-10 2xs:h-8";
 
   const handleOutsideClick = (e) => {
     if (formRef.current && !formRef.current.contains(e.target)) {
@@ -26,7 +26,21 @@ const SearchBar = () => {
   };
 
   return (
-    <div className={`flex flex-1 justify-center items-center rounded-md xs:w-60 sm:w-72 md:w-10/12 lg:w-11/12 xl:w-11/12 2xl:w-full 3xl:w-full h-10 sm:h-9 xs:h-8 flex-wrap`}>
+    <div className={`
+    flex 
+    flex-1 
+    justify-center 
+    items-center 
+    rounded-md 
+    xs:w-60 
+    sm:w-72 
+    md:w-10/12 
+    lg:w-11/12 
+    xl:w-11/12 
+    2xl:w-full 
+    3xl:w-full 
+    h-10 
+    sm:h-9 xs:h-8 flex-wrap`}>
       <form className={searchBar} onSubmit={handleSearch} ref={formRef}>
         <Category />
         &nbsp; &nbsp;
@@ -36,7 +50,7 @@ const SearchBar = () => {
           onClick={handleSearchListShow}
           type="text"
           placeholder="Search for Products"
-          className="flex-1 bg-transparent outline-none py-2 pr-2 xs:w-80"
+          className="flex-1 bg-transparent outline-none py-2 pr-2 2xs:p-0 xs:w-80"
         />
         <button
           type="submit"

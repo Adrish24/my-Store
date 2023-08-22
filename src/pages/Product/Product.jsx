@@ -27,11 +27,11 @@ const Product = () => {
             <Spinner animation="border" role="status" />
           </div>
         ) : (
-          <div className="flex xs:flex-col bg-white w-full px-3 py-5">
-            <div className="w-5/12 xs:w-full pr-4 flex items-start z-30">
+          <div className="flex 2xs:flex-col xs:flex-col bg-white w-full px-3 py-5">
+            <div className="w-5/12 3xs:w-full 2xs:w-full xs:w-full pr-4 flex items-start z-30 mb-3">
               <Preview />
             </div>
-            <div className="w-6/12 xs:w-full grow pl-4 fadebottom-border z-10">
+            <div className="w-6/12 3xs:w-full 2xs:w-full xs:w-full grow pl-4 fadebottom-border z-10">
               <Details />
             </div>
           </div>

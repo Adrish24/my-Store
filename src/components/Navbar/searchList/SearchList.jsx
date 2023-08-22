@@ -18,7 +18,7 @@ const SearchList = () => {
     <div
       className={`searchList bg-white justify-self-end rounded-b-sm drop-shadow-xl z-40 ${
         activeSearchList ? "" : "hidden"
-      } xs:40 sm:w-72  md:w-10/12 lg:w-11/12 xl:w-11/12 2xl:w-full 3xl:w-full`}
+      } w-full 2xs:w-full`}
     >
       <div className="flex flex-col overflow-auto">
         {searchList &&
@@ -33,14 +33,14 @@ const SearchList = () => {
               className="flex px-2 pb-2 pt-1 hover:bg-slate-1
               00"
             >
-              <span className="w-10">
-                <img className="object-contian h-10 mx-auto" src={item.image}/>
+              <span className="w-10 2xs:w-7">
+                <img className="object-contian 2xs:h-7 h-10 mx-auto" src={item.image}/>
               </span>
-              <div className="flex-1 flex flex-col px-2">
+              <div className="flex-1 flex flex-col px-2 2xs:text-xs">
                 <span className="font-semibold whitespace-normal">
                   {item.title}
                 </span>
-                <span className="text-xs font-medium">in {item.category}</span>
+                <span className="text-xs font-medium 2xs:text-2xs">in {item.category}</span>
               </div>
             </Link>
           ))}

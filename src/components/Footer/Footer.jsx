@@ -16,7 +16,7 @@ const Footer = () => {
       <div className="bg-slate-800 text-center text-slate-200 py-3 font-thin text-sm cursor-pointer"
        onClick={goTo}
       >Back to top</div>
-      <div className="flex  justify-center h-60 w-full px-10 pt-12 gap-20 xs:gap-10 bg-slate-200">
+      <div className="flex  justify-center h-60 w-full px-10 pt-12 gap-20 xs:gap-10 2xs:gap-5 bg-slate-200">
         <About />
         <Help />
         <Policy />

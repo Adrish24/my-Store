@@ -29,7 +29,7 @@ const Rating = ({ rating }) => {
       onMouseLeave={() => setShow(false)}
     >
       {ratingStar}
-      <span className="text-sm ml-2 text-slate-500">({rating.count})</span>
+      <span className="text-sm ml-2 text-slate-500 2xs:text-xs">({rating.count})</span>
       {show && (
         <span className="absolute top-5  bg-black text-white font-thin text-xs p-1 border-white">
           {rating.rate} out of 5 stars

@@ -13,7 +13,7 @@ const SearchResults = () => {
          {selectedItems.map((product, index) => (
           <FlexResults key={index} product={product}/>
          ))}
-        </div>):(<div className= "bg-white p-3 grid grid-cols-4 md:grid-cols-2 lg:grid-cols-3">
+        </div>):(<div className= "bg-white p-3 grid grid-cols-4 2xs:grid-cols-2 xs:grid-cols-2 md:grid-cols-2 lg:grid-cols-3">
          {selectedItems.map((product, index) => (
           <GridResults key={index} product={product}/>
          ))}

@@ -14,17 +14,17 @@ function CategorySelect() {
   };
 
   return (
-    <div className="flex flex-col p-3 border-b border-slate-200">
+    <div className="flex flex-col p-3 xs:p-2 border-b border-slate-200">
       <div
         className="flex justify-between items-center cursor-pointer"
         onClick={toggleDropDown}
       >
-        <h1 className="text-xs font-semibold uppercase mb-2">Categories</h1>
+        <h1 className="text-xs font-semibold uppercase mb-2 2xs:text-2xs">Categories</h1>
         <span>
           {drop ? (
-            <RiArrowDropUpLine size={20} />
+            <RiArrowDropUpLine className="2xs:text-xs text-xl" />
           ) : (
-            <RiArrowDropDownLine size={20} />
+            <RiArrowDropDownLine className="2xs:text-xs text-xl" />
           )}
         </span>
       </div>
@@ -32,7 +32,7 @@ function CategorySelect() {
         {drop &&
           options.map((option) => (
             <Link
-              className={`text-sm px-2 py-1 mb-1 rounded-sm border-2 border-slate-200 ${
+              className={`text-sm px-2 py-1 mb-1 rounded-sm border-2 border-slate-200 xs:text-xs 2xs:text-2xs ${
                 select === option.category
                   ? "bg-slate-400"
                   : "hover:bg-slate-300"

@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState } from "react";
+import { useContext } from "react";
 import Rating from "@mui/material/Rating";
 import Box from "@mui/material/Box";
 import StarIcon from "@mui/icons-material/Star";
@@ -14,7 +14,7 @@ const labels = {
 
 function CustomerRating() {
   
-  const { rating, hover, setHover,select, setCategory, handleRatingSelect } = useContext(AppContext)
+  const { rating, hover, setHover, handleRatingSelect } = useContext(AppContext)
 
   function getLabelText(value) {
     return `${value} Star${value !== 1 ? "s" : ""}, ${labels[value]}`;
@@ -25,8 +25,8 @@ function CustomerRating() {
   // },[])
   
   return (
-    <div className="p-3">
-      <h1 className="text-xs font-semibold uppercase mb-2">Customer Rating</h1>
+    <div className="p-3 xs:p-2">
+      <h1 className="text-xs font-semibold uppercase mb-2 2xs:text-2xs">Customer Rating</h1>
       <Box
         sx={{
           width: "100%",
@@ -35,6 +35,14 @@ function CustomerRating() {
         }}
       >
         <Rating
+        sx={{
+          "@media (min-width: 520px) and (max-width: 639px)": {
+            fontSize: '24px'
+        }, 
+        "@media (min-width: 415px) and (max-width: 519px)": {
+          fontSize: '16px'
+      }
+        }}
           name="hover-feedback"
           value={rating}
           precision={1}
@@ -48,7 +56,7 @@ function CustomerRating() {
           emptyIcon={<StarIcon style={{ opacity: 0.55 }} fontSize="inherit" />}
         />
         {rating !== null && (
-          <Box sx={{ ml: 2 }}>{labels[hover !== -1 ? hover : rating]}</Box>
+          <Box className="xs:text-xs 2xs:text-2xs 3xs:text-2xs" sx={{ ml: 2 }}>{labels[hover !== -1 ? hover : rating]}</Box>
         )}
       </Box>
     </div>
