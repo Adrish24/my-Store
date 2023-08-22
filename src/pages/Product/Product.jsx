@@ -27,7 +27,7 @@ const Product = () => {
             <Spinner animation="border" role="status" />
           </div>
         ) : (
-          <div className="flex 2xs:flex-col xs:flex-col bg-white w-full px-3 py-5">
+          <div className="flex 3xs:flex-col 2xs:flex-col xs:flex-col bg-white w-full px-3 py-5">
             <div className="w-5/12 3xs:w-full 2xs:w-full xs:w-full pr-4 flex items-start z-30 mb-3">
               <Preview />
             </div>

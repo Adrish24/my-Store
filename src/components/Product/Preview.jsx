@@ -18,9 +18,10 @@ const Preview = () => {
           border-solid 
           border-slate-300 
           rounded-sm 
-          mb-3 py-2"
+          mb-3 py-2
+          3xs:m-auto"
         >
-          <img className="object-contain max-h-96 w-96" src={product.image} />
+          <img className="object-contain max-h-96 w-96 3xs:w-80" src={product.image} />
         </div>
         <div className="flex justify-evenly gap-2 text-white">
           <button
