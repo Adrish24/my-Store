@@ -45,6 +45,7 @@ export const DataProvider = ({ children }) => {
     }
   };
 
+
   const getSingleProduct = async (id) => {
     setValue("");
     setSearchList([]);
@@ -120,14 +121,6 @@ export const DataProvider = ({ children }) => {
   const handleSearch = (e) => {
     e.preventDefault();
     console.log(`${category} ${value}`);
-    // if (value.length > 0 && categoryList.length > 0) {
-    //   const newSearchList = categoryList
-    //     .filter((search) =>
-    //       search.title.toLowerCase().includes(value.toLowerCase())
-    //     )
-    //     .slice(0, 8);
-    //   setSearchList(newSearchList);
-    // }
   };
 
   const handleChange = (e) => {
