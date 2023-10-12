@@ -65,6 +65,8 @@ export const DataProvider = ({ children }) => {
     }
   };
 
+  if(!products) return
+
   // separting men's cloths from products
   const getCloths = () => {
     const clothData = products.filter(

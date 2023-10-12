@@ -5,6 +5,9 @@ import Rating from "./Rating";
 
 const RatedItems = () => {
   const { products, setCategory, getSingleProduct } = useContext(AppContext);
+
+  if(!products) return
+
   const highestRatedItems = products.filter((item) => item.rating.rate >= 4);
 
   return (

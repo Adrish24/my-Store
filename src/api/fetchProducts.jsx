@@ -10,6 +10,7 @@ const fetchProducts = async() => {
   }
   catch(error){
     console.error(error)
+    alert(error.message)
   }
 }
 
