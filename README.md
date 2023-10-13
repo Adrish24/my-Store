@@ -8,4 +8,4 @@ pages: add to cart, a homepage, a product browsing page, and a single product vi
 
 page hosted on vercel.
 
-link: https://my-store-chi.vercel.app/
+link: https://my-store-vert.vercel.app/
