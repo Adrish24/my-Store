@@ -65,7 +65,7 @@ export const DataProvider = ({ children }) => {
     }
   };
 
-  if(!products) return
+  
 
   // separting men's cloths from products
   const getCloths = () => {
@@ -186,6 +186,8 @@ export const DataProvider = ({ children }) => {
 
   //excuting functions everytime produtcs changes
   useEffect(() => {
+    if(!products) return
+    
     getCloths();
     getWcloths();
     getJewelerys();
